@@ -1,14 +1,11 @@
-import styled from "styled-components"
-export const Container = styled.div` 
-
-    width: 100%;
-    height: 100%;
-
-`
-
-export const PizzaContainer = styled.div`
-  display: flex;
-  flex-direction: column;
+import styled from "styled-components";
+export const Container = styled.div`
+  display: block;
+  padding-top: 10rem;
   justify-content: center;
   align-items: center;
+  width: 100%;
+  height: 100%;
 `;
+
+

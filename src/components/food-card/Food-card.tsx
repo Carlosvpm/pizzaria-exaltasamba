@@ -1,8 +1,5 @@
 import {
-  CartItem,
-  CartItemNome,
-  CartItemQt,
-  CartItemQtarea,
+  PizzaContainer,
   PizzaiItemDesc,
   PizzaItem,
   PizzaItemAdd,
@@ -13,7 +10,7 @@ import {
 
 export const FoodCard = () => {
   return (
-    <>
+    <PizzaContainer>
       <PizzaItem>
         <a href="">
           <PizzaItemIMG>
@@ -25,15 +22,6 @@ export const FoodCard = () => {
         <PizzaItemName>--</PizzaItemName>
         <PizzaiItemDesc>--</PizzaiItemDesc>
       </PizzaItem>
-      <CartItem>
-        <img src="" />
-        <CartItemNome>--</CartItemNome>
-        <CartItemQtarea>
-          <button className="cart--item-qtmenos">-</button>
-          <CartItemQt>1</CartItemQt>
-          <button className="cart--item-qtmais">+</button>
-        </CartItemQtarea>
-      </CartItem>
-    </>
+    </PizzaContainer>
   );
 };
