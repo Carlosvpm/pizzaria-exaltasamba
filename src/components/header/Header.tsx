@@ -4,7 +4,8 @@ export const Header = () => {
   const title: string = "ExaltaPizza";
   return (
     <HeaderContainer>
-      <h1>{title}</h1>
+          <h1>{title}</h1>
+          
     </HeaderContainer>
   );
 };
