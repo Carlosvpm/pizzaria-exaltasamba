@@ -7,7 +7,21 @@ on:
     branches: [ "master" ]
 
 jobs:
+  test: 
+    name: Test
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Run tests
+      run: npm test --coverage
+
+
   build:
+    needs: test
+    
     name: Build
 
     runs-on: ubuntu-latest
@@ -16,7 +30,7 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v3
 
-    - name: Npm install Node
+    - name: Install Node 
       uses: actions/setup-node@v3
       with:
         node-version: 16.x
