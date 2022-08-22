@@ -1,5 +1,6 @@
 import styled from "styled-components";
 
+
 export const PizzaItem = styled.div`
   padding: 2rem;
   text-align: center;
