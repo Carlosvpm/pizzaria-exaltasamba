@@ -23,5 +23,7 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
+    - name: Install NPM dependencies
+      run: npm i
     - run: npm run build
     - run: npm test --coverage
