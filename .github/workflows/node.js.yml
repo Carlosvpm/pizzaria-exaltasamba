@@ -12,23 +12,19 @@ jobs:
 
     runs-on: ubuntu-latest
 
-    strategy:
-      matrix:
-        node-version: [14.x]
-
     steps:
     - name: Checkout code
       uses: actions/checkout@v3
 
-    - name: Npm install Node ${{ matrix.node-version }}
+    - name: Npm install Node
       uses: actions/setup-node@v3
       with:
-        node-version: 14.x
+        node-version: 16.x
 
     - name: Install NPM dependencies
       run: npm i
     - name: Build Project
       run: npm run build
-      
+
     - name: Run tests
       run: npm test --coverage
