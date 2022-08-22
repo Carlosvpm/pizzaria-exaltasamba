@@ -8,22 +8,27 @@ on:
 
 jobs:
   build:
+    name: Build
 
     runs-on: ubuntu-latest
 
     strategy:
       matrix:
         node-version: [14.x]
-        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
 
     steps:
-    - uses: actions/checkout@v3
-    - name: Set up use Node ${{ matrix.node-version }}
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Npm install Node ${{ matrix.node-version }}
       uses: actions/setup-node@v3
       with:
-        node-version: ${{ matrix.node-version }}
-        cache: 'npm'
+        node-version: 14.x
+
     - name: Install NPM dependencies
       run: npm i
-    - run: npm run build
-    - run: npm test --coverage
+    - name: Build Project
+      run: npm run build
+      
+    - name: Run tests
+      run: npm test --coverage
