@@ -8,3 +8,10 @@ export const NavbarItems = styled.div`
     }
   }
 `;
+
+export const Row = styled.div`
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: space-between;
+`;
