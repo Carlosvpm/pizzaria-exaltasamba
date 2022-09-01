@@ -1,3 +1,5 @@
+import { PizzaInterface } from "../../models/Pizza.interface";
+import { carrinho } from "../../services/carrinho";
 import {
   PizzaContainer,
   PizzaiItemDesc,
@@ -8,20 +10,33 @@ import {
   PizzaItemPrice,
 } from "./food-card.styles";
 
-export const FoodCard = () => {
+type FoodProps = {
+  pizzas: PizzaInterface[];
+};
+
+export const FoodCard = (props: FoodProps) => {
+  if (!props.pizzas) return null;
+
+  const addOnCart = (pizza: PizzaInterface) => {
+    carrinho.push(pizza)
+    console.log(carrinho)
+  }
   return (
     <PizzaContainer>
-      <PizzaItem>
-        <a href="">
-          <PizzaItemIMG>
-            <img src="" />
-          </PizzaItemIMG>
-          <PizzaItemAdd>+</PizzaItemAdd>
-        </a>
-        <PizzaItemPrice>R$ --</PizzaItemPrice>
-        <PizzaItemName>--</PizzaItemName>
-        <PizzaiItemDesc>--</PizzaiItemDesc>
-      </PizzaItem>
+      {props.pizzas.map((pizza: PizzaInterface) => (
+        <PizzaItem>
+          <button onClick={()=>addOnCart(pizza)}>
+            <PizzaItemIMG>
+              <img src="#" />
+            </PizzaItemIMG>
+            <PizzaItemAdd >+</PizzaItemAdd>
+          </button>
+
+          <PizzaItemPrice>R$ {pizza.price}</PizzaItemPrice>
+          <PizzaItemName>{pizza.name}</PizzaItemName>
+          <PizzaiItemDesc>{pizza.description}</PizzaiItemDesc>
+        </PizzaItem>
+      ))}
     </PizzaContainer>
   );
 };

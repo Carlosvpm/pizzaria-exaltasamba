@@ -15,3 +15,7 @@ export const Row = styled.div`
   width: 100%;
   justify-content: space-between;
 `;
+export const NavContainer = styled.div`
+  position: fixed;
+  width: 100%;
+`;

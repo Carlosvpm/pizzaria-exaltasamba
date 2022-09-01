@@ -1,39 +1,46 @@
-import Button from "react-bootstrap/Button";
 import Container from "react-bootstrap/Container";
 import AddIcon from "@mui/icons-material/Add";
 import RemoveOutlinedIcon from "@mui/icons-material/RemoveOutlined";
-import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import Offcanvas from "react-bootstrap/Offcanvas";
-import { Row } from "./navbar.styles";
+import { NavContainer, Row } from "./navbar.styles";
+import { carrinho } from "../../services/carrinho";
+import { PizzaInterface } from "../../models/Pizza.interface";
 
 export const NavBar = () => {
+
+  const arrayPizzas: PizzaInterface[] = carrinho
   return (
-    <>
-      <Navbar key="xxl" bg="light" expand="xxl" className="mb-3">
+    <NavContainer>
+      <Navbar bg="light" expand="true" className="mb-3">
         <Container fluid>
           <Navbar.Brand href="#">ExaltaPizza</Navbar.Brand>
           <Navbar.Toggle aria-controls="offcanvasNavbar-expand-xxl" />
           <Navbar.Offcanvas
-            id={`offcanvasNavbar-expand-xxl`}
-            aria-labelledby={`offcanvasNavbarLabel-expand-xxl`}
+            id="offcanvasNavbar-expand-xxl"
+            aria-labelledby="offcanvasNavbarLabel-expand-xxl"
             placement="end"
           >
             <Offcanvas.Header closeButton>
-              <Offcanvas.Title id={`offcanvasNavbarLabel-expand-xxl`}>
+              <Offcanvas.Title id="offcanvasNavbarLabel-expand-xxl">
                 Carrinho
               </Offcanvas.Title>
             </Offcanvas.Header>
             <Offcanvas.Body>
-              <Nav>
-                <Row>
-                  <div>
-                    <p> pizza tal</p>
-                  </div>
-                  <AddIcon></AddIcon>
-                  <RemoveOutlinedIcon></RemoveOutlinedIcon>
-                  <div></div>
-                </Row>
+              <>
+                {arrayPizzas.map((pizza: PizzaInterface) => {
+                  <Row>
+                    <div>
+                      <p>
+                        {pizza.name}({pizza.size})
+                      </p>
+                    </div>
+                    <AddIcon></AddIcon>
+                    <RemoveOutlinedIcon></RemoveOutlinedIcon>
+                    <div></div>
+                  </Row>;
+                })}
+
                 <Row>
                   <div>
                     <p> Subtotal</p>
@@ -61,11 +68,11 @@ export const NavBar = () => {
                     <p>VALOR</p>
                   </div>
                 </Row>
-              </Nav>
+              </>
             </Offcanvas.Body>
           </Navbar.Offcanvas>
         </Container>
       </Navbar>
-    </>
+    </NavContainer>
   );
 };
