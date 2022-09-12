@@ -1,15 +1,17 @@
 import Container from "react-bootstrap/Container";
 import AddIcon from "@mui/icons-material/Add";
 import RemoveOutlinedIcon from "@mui/icons-material/RemoveOutlined";
+import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import Offcanvas from "react-bootstrap/Offcanvas";
-import { NavContainer, Row } from "./navbar.styles";
-import { carrinho } from "../../services/carrinho";
+import { Column, NavContainer, Row } from "./navbar.styles";
 import { PizzaInterface } from "../../models/Pizza.interface";
 
-export const NavBar = () => {
+type NavBarProps = {
+  carrinho: PizzaInterface[];
+};
 
-  const arrayPizzas: PizzaInterface[] = carrinho
+export const NavBar = (props: NavBarProps) => {
   return (
     <NavContainer>
       <Navbar bg="light" expand="true" className="mb-3">
@@ -27,48 +29,45 @@ export const NavBar = () => {
               </Offcanvas.Title>
             </Offcanvas.Header>
             <Offcanvas.Body>
-              <>
-                {arrayPizzas.map((pizza: PizzaInterface) => {
+              <Nav>
+                <Column>
+                  {props.carrinho.map((pizza: PizzaInterface) => {
+                    <Row>
+                      <div>
+                        <p>
+                          {pizza.name}({pizza.size})
+                        </p>
+                      </div>
+                      <AddIcon></AddIcon>
+                      <RemoveOutlinedIcon></RemoveOutlinedIcon>
+                    </Row>;
+                  })}
                   <Row>
                     <div>
-                      <p>
-                        {pizza.name}({pizza.size})
-                      </p>
+                      <p>Subtotal</p>
                     </div>
-                    <AddIcon></AddIcon>
-                    <RemoveOutlinedIcon></RemoveOutlinedIcon>
-                    <div></div>
-                  </Row>;
-                })}
-
-                <Row>
-                  <div>
-                    <p> Subtotal</p>
-                  </div>
-
-                  <div>
-                    <p>valor</p>
-                  </div>
-                </Row>
-                <Row>
-                  <div>
-                    <p> Desconto</p>
-                  </div>
-
-                  <div>
-                    <p>valor</p>
-                  </div>
-                </Row>
-                <Row>
-                  <div>
-                    <p>TOTAL</p>
-                  </div>
-
-                  <div>
-                    <p>VALOR</p>
-                  </div>
-                </Row>
-              </>
+                    <div>
+                      <p>R$ 0.00</p>
+                    </div>
+                  </Row>
+                  <Row>
+                    <div>
+                      <p>Desconto</p>
+                    </div>
+                    <div>
+                      <p>R$ 0.00</p>
+                    </div>
+                  </Row>
+                  <Row>
+                    <div>
+                      <p>TOTAL</p>
+                    </div>
+                    <div>
+                      <p>R$ 0.00</p>
+                    </div>
+                  </Row>
+                </Column>
+              </Nav>
             </Offcanvas.Body>
           </Navbar.Offcanvas>
         </Container>
