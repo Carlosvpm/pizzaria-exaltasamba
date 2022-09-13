@@ -12,6 +12,7 @@ import {
 import { FinalizeorderButton } from "../finalize-order-button/finalize-order-button";
 import { useCart } from "react-use-cart";
 import { Button, Stack } from "react-bootstrap";
+import { PizzaInterface } from "../../models/Pizza.interface";
 
 type NavBarProps = {
   desconto: number;
@@ -28,6 +29,12 @@ export const NavBar = (props: NavBarProps) => {
     totalUniqueItems,
     cartTotal,
   } = useCart();
+
+  const text: string = `Olá, gostaria de realizar meu pedido: ${items.map(
+    (pizza) => {
+      return ` ${pizza.quantity} ${pizza.name} - tamanho(${pizza.size})`;
+    }
+  )}`;
 
   const desconto = props.desconto ? props.desconto : 0.0;
 
@@ -135,7 +142,7 @@ export const NavBar = (props: NavBarProps) => {
                       </div>
                     </Row>
                     <ContainerFinalizeButton>
-                      <FinalizeorderButton></FinalizeorderButton>
+                      <FinalizeorderButton text={text}></FinalizeorderButton>
                     </ContainerFinalizeButton>
                   </>
                 </Column>
