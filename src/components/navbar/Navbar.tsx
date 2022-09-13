@@ -4,14 +4,30 @@ import RemoveOutlinedIcon from "@mui/icons-material/RemoveOutlined";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import Offcanvas from "react-bootstrap/Offcanvas";
-import { Column, NavContainer, Row } from "./navbar.styles";
+import {
+  Column,
+  ContainerFinalizeButton,
+  NavContainer,
+  Row,
+} from "./navbar.styles";
 import { PizzaInterface } from "../../models/Pizza.interface";
+import { FinalizeorderButton } from "../finalize-order-button/finalize-order-button";
+import { useCart } from "react-use-cart";
 
 type NavBarProps = {
   carrinho: PizzaInterface[];
 };
 
 export const NavBar = (props: NavBarProps) => {
+  const {
+    isEmpty,
+    totalItems,
+    items,
+    updateItemQuantity,
+    removeItem,
+    emptyCart,
+  } = useCart();
+
   return (
     <NavContainer>
       <Navbar bg="light" expand="true" className="mb-3">
@@ -31,41 +47,56 @@ export const NavBar = (props: NavBarProps) => {
             <Offcanvas.Body>
               <Nav>
                 <Column>
-                  {props.carrinho.map((pizza: PizzaInterface) => {
+                  <>
+                    {isEmpty
+                      ? null
+                      : props.carrinho.map((pizza: PizzaInterface) => {
+                          <Row>
+                            <div>
+                              <p>
+                                {pizza.name}({pizza.size})
+                              </p>
+                            </div>
+                            <AddIcon></AddIcon>
+                            <RemoveOutlinedIcon></RemoveOutlinedIcon>
+                          </Row>;
+                        })}
                     <Row>
                       <div>
-                        <p>
-                          {pizza.name}({pizza.size})
-                        </p>
+                        <p>Total de pizzas</p>
                       </div>
-                      <AddIcon></AddIcon>
-                      <RemoveOutlinedIcon></RemoveOutlinedIcon>
-                    </Row>;
-                  })}
-                  <Row>
-                    <div>
-                      <p>Subtotal</p>
-                    </div>
-                    <div>
-                      <p>R$ 0.00</p>
-                    </div>
-                  </Row>
-                  <Row>
-                    <div>
-                      <p>Desconto</p>
-                    </div>
-                    <div>
-                      <p>R$ 0.00</p>
-                    </div>
-                  </Row>
-                  <Row>
-                    <div>
-                      <p>TOTAL</p>
-                    </div>
-                    <div>
-                      <p>R$ 0.00</p>
-                    </div>
-                  </Row>
+                      <div>
+                        <p>{totalItems}</p>
+                      </div>
+                    </Row>
+                    <Row>
+                      <div>
+                        <p>Subtotal</p>
+                      </div>
+                      <div>
+                        <p>R$ 0.00</p>
+                      </div>
+                    </Row>
+                    <Row>
+                      <div>
+                        <p>Desconto</p>
+                      </div>
+                      <div>
+                        <p>R$ 0.00</p>
+                      </div>
+                    </Row>
+                    <Row>
+                      <div>
+                        <p>TOTAL</p>
+                      </div>
+                      <div>
+                        <p>R$ 0.00</p>
+                      </div>
+                    </Row>
+                    <ContainerFinalizeButton>
+                      <FinalizeorderButton></FinalizeorderButton>
+                    </ContainerFinalizeButton>
+                  </>
                 </Column>
               </Nav>
             </Offcanvas.Body>

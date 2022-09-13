@@ -1,5 +1,5 @@
 import { PizzaInterface } from "../../models/Pizza.interface";
-import { carrinho } from "../../services/carrinho";
+
 import {
   PizzaContainer,
   PizzaiItemDesc,
@@ -9,27 +9,22 @@ import {
   PizzaItemName,
   PizzaItemPrice,
 } from "./food-card.styles";
+import pizzas from "../../data/pizzas-data";
+import { useCart } from "react-use-cart";
 
-type FoodProps = {
-  pizzas: PizzaInterface[];
-};
 
-export const FoodCard = (props: FoodProps) => {
-  if (!props.pizzas) return null;
+export const FoodCard = () => {
 
-  const addOnCart = (pizza: PizzaInterface) => {
-    carrinho.push(pizza)
-    console.log(carrinho)
-  }
+  const { addItem } = useCart();
   return (
     <PizzaContainer>
-      {props.pizzas.map((pizza: PizzaInterface) => (
+      {pizzas.map((pizza: PizzaInterface) => (
         <PizzaItem>
-          <button onClick={()=>addOnCart(pizza)}>
+          <button onClick={() => addItem(pizza)}>
             <PizzaItemIMG>
               <img src="#" />
             </PizzaItemIMG>
-            <PizzaItemAdd >+</PizzaItemAdd>
+            <PizzaItemAdd>+</PizzaItemAdd>
           </button>
 
           <PizzaItemPrice>R$ {pizza.price}</PizzaItemPrice>
@@ -40,3 +35,5 @@ export const FoodCard = (props: FoodProps) => {
     </PizzaContainer>
   );
 };
+
+

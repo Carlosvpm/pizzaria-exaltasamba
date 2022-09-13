@@ -9,6 +9,9 @@ export const NavbarItems = styled.div`
   }
 `;
 
+export interface ColumnCartProps {
+  children?: JSX.Element | JSX.Element[];
+}
 export const Column = styled.div`
   display: flex;
   flex-direction: column;
@@ -20,6 +23,14 @@ export const Row = styled.div`
   width: 100%;
   justify-content: space-between;
 `;
+export const ContainerFinalizeButton = styled.div`
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: center;
+`;
+
+
 export const NavContainer = styled.div`
   position: fixed;
   width: 100%;

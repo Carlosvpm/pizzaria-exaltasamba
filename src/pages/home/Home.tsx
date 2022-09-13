@@ -1,19 +1,19 @@
 import { FoodCard } from "../../components/food-card/Food-card";
 import { NavBar } from "../../components/navbar/Navbar";
 import { PizzaInterface } from "../../models/Pizza.interface";
-import { carrinho } from "../../services/carrinho";
-import { pizzas } from "../../services/pizzas";
 import { Container } from "./home.styles";
+import pizzas from "../../data/pizzas-data";
+import carrinho from "../../data/carrinho-data";
+import { CartProvider } from "react-use-cart";
 
 export const Home = () => {
-  const Arraycarrinho: PizzaInterface[] = carrinho;
-  const pizzasArray: PizzaInterface[] = pizzas;
+  console.warn(pizzas);
   return (
-    <>
-      <NavBar carrinho={Arraycarrinho}></NavBar>
+    <CartProvider>
+      <NavBar carrinho={carrinho}></NavBar>
       <Container>
-        <FoodCard pizzas={pizzasArray}></FoodCard>
+        <FoodCard></FoodCard>
       </Container>
-    </>
+    </CartProvider>
   );
 };
