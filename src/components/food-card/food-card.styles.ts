@@ -7,11 +7,14 @@ export const PizzaItem = styled.div`
   max-width: 250px;
   font-family: "Hepta Slab", Helvetica, Arial;
   margin: 0 auto 50px auto;
-  a {
+  button {
+    border: none;
+    background-color: none;
     display: flex;
     flex-direction: column;
     align-items: center;
     text-decoration: none;
+    cursor: pointer;
   }
   @media (max-width: 800px) {
     padding: 0rem;
@@ -31,24 +34,21 @@ export const PizzaItemIMG = styled.div`
 `;
 export const PizzaContainer = styled.div`
   width: 100%;
-  padding: 2rem;
+  padding-top: 1rem;
   display: grid;
   grid-template-columns: repeat(6, 1fr);
   justify-content: center;
   align-items: center;
   @media (max-width: 1200px) {
     grid-template-columns: repeat(3, 1fr);
-    padding: 0;
   }
 
   @media (max-width: 1000px) {
     grid-template-columns: repeat(2, 1fr);
-    padding: 0;
   }
 
   @media (max-width: 800px) {
     grid-template-columns: repeat(1, 1fr);
-    padding: 0;
   }
 `;
 
@@ -56,11 +56,12 @@ export const PizzaItemAdd = styled.div`
   width: 50px;
   height: 50px;
   line-height: 50px;
-  border-radius: 25px;
+  border-radius: 50%;
   background-color: #388bc5;
   text-align: center;
   color: #fff;
-  font-size: 22px;
+  font-size: 27px;
+  justify-content: center;
   cursor: pointer;
   margin-top: -25px;
   transition: all ease 0.2s;

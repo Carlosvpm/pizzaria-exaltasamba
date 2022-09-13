@@ -1,3 +1,5 @@
+import { PizzaInterface } from "../../models/Pizza.interface";
+
 import {
   PizzaContainer,
   PizzaiItemDesc,
@@ -7,21 +9,31 @@ import {
   PizzaItemName,
   PizzaItemPrice,
 } from "./food-card.styles";
+import pizzas from "../../data/pizzas-data";
+import { useCart } from "react-use-cart";
+
 
 export const FoodCard = () => {
+
+  const { addItem } = useCart();
   return (
     <PizzaContainer>
-      <PizzaItem>
-        <a href="">
-          <PizzaItemIMG>
-            <img src="" />
-          </PizzaItemIMG>
-          <PizzaItemAdd>+</PizzaItemAdd>
-        </a>
-        <PizzaItemPrice>R$ --</PizzaItemPrice>
-        <PizzaItemName>--</PizzaItemName>
-        <PizzaiItemDesc>--</PizzaiItemDesc>
-      </PizzaItem>
+      {pizzas.map((pizza: PizzaInterface) => (
+        <PizzaItem>
+          <button onClick={() => addItem(pizza)}>
+            <PizzaItemIMG>
+              <img src="#" />
+            </PizzaItemIMG>
+            <PizzaItemAdd>+</PizzaItemAdd>
+          </button>
+
+          <PizzaItemPrice>R$ {pizza.price}</PizzaItemPrice>
+          <PizzaItemName>{pizza.name}</PizzaItemName>
+          <PizzaiItemDesc>{pizza.description}</PizzaiItemDesc>
+        </PizzaItem>
+      ))}
     </PizzaContainer>
   );
 };
+
+
