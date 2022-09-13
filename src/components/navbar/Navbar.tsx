@@ -15,7 +15,7 @@ import { FinalizeorderButton } from "../finalize-order-button/finalize-order-but
 import { useCart } from "react-use-cart";
 
 type NavBarProps = {
-  carrinho: PizzaInterface[];
+  desconto: number;
 };
 
 export const NavBar = (props: NavBarProps) => {
@@ -26,7 +26,10 @@ export const NavBar = (props: NavBarProps) => {
     updateItemQuantity,
     removeItem,
     emptyCart,
+    cartTotal,
   } = useCart();
+
+  const desconto = props.desconto ? props.desconto : 0.0;
 
   return (
     <NavContainer>
@@ -48,19 +51,17 @@ export const NavBar = (props: NavBarProps) => {
               <Nav>
                 <Column>
                   <>
-                    {isEmpty
-                      ? null
-                      : props.carrinho.map((pizza: PizzaInterface) => {
-                          <Row>
-                            <div>
-                              <p>
-                                {pizza.name}({pizza.size})
-                              </p>
-                            </div>
-                            <AddIcon></AddIcon>
-                            <RemoveOutlinedIcon></RemoveOutlinedIcon>
-                          </Row>;
-                        })}
+                    {items.map((pizza, index) => {
+                      <Row>
+                        <div>
+                          <p>
+                            {pizza.name} - {pizza.size}
+                          </p>
+                        </div>
+                        <AddIcon></AddIcon>
+                        <RemoveOutlinedIcon></RemoveOutlinedIcon>
+                      </Row>;
+                    })}
                     <Row>
                       <div>
                         <p>Total de pizzas</p>
@@ -74,7 +75,7 @@ export const NavBar = (props: NavBarProps) => {
                         <p>Subtotal</p>
                       </div>
                       <div>
-                        <p>R$ 0.00</p>
+                        <p>R$ {cartTotal}</p>
                       </div>
                     </Row>
                     <Row>
@@ -82,7 +83,7 @@ export const NavBar = (props: NavBarProps) => {
                         <p>Desconto</p>
                       </div>
                       <div>
-                        <p>R$ 0.00</p>
+                        <p>R$ {desconto}</p>
                       </div>
                     </Row>
                     <Row>
@@ -90,7 +91,7 @@ export const NavBar = (props: NavBarProps) => {
                         <p>TOTAL</p>
                       </div>
                       <div>
-                        <p>R$ 0.00</p>
+                        <p>R$ {cartTotal - desconto}</p>
                       </div>
                     </Row>
                     <ContainerFinalizeButton>
