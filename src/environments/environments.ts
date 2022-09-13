@@ -1,5 +1,5 @@
 const environments = {
-  PHONE_NUMBER: "5598981440442",
+  PHONE_NUMBER: "",
 };
 
 export default environments
