@@ -1,6 +1,5 @@
 import Container from "react-bootstrap/Container";
-import AddIcon from "@mui/icons-material/Add";
-import RemoveOutlinedIcon from "@mui/icons-material/RemoveOutlined";
+import Card from "react-bootstrap/Card";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import Offcanvas from "react-bootstrap/Offcanvas";
@@ -10,9 +9,9 @@ import {
   NavContainer,
   Row,
 } from "./navbar.styles";
-import { PizzaInterface } from "../../models/Pizza.interface";
 import { FinalizeorderButton } from "../finalize-order-button/finalize-order-button";
 import { useCart } from "react-use-cart";
+import { Button, Stack } from "react-bootstrap";
 
 type NavBarProps = {
   desconto: number;
@@ -26,6 +25,7 @@ export const NavBar = (props: NavBarProps) => {
     updateItemQuantity,
     removeItem,
     emptyCart,
+    totalUniqueItems,
     cartTotal,
   } = useCart();
 
@@ -51,16 +51,56 @@ export const NavBar = (props: NavBarProps) => {
               <Nav>
                 <Column>
                   <>
+                    <div className="w-100 pb-3">
+                      <Button
+                        className="w-100 "
+                        variant="danger"
+                        onClick={() => emptyCart()}
+                      >
+                        Limpar carrinho
+                      </Button>
+                    </div>
+
                     {items.map((pizza, index) => {
-                      <Row>
-                        <div>
-                          <p>
-                            {pizza.name} - {pizza.size}
-                          </p>
-                        </div>
-                        <AddIcon></AddIcon>
-                        <RemoveOutlinedIcon></RemoveOutlinedIcon>
-                      </Row>;
+                      return (
+                        <Card body className="m-1">
+                          {pizza.name} - {pizza.size}
+                          <Stack direction="horizontal" gap={4}>
+                            <div className="bg-light">
+                              <Button
+                                variant="secondary"
+                                onClick={() =>
+                                  updateItemQuantity(
+                                    pizza.id,
+                                    Number(pizza.quantity) + 1
+                                  )
+                                }
+                                size="sm"
+                              >
+                                +
+                              </Button>
+                            </div>
+                            <div className="bg-light border ">
+                              {pizza.quantity}
+                            </div>
+                            <div className="bg-light">
+                              <Button
+                                variant="secondary"
+                                onClick={() => {
+                                  updateItemQuantity(
+                                    pizza.id,
+                                    Number(pizza.quantity) - 1
+                                  );
+                                }}
+                                size="sm"
+                              >
+                                -
+                              </Button>
+                            </div>
+                            <div className="bg-light">R$ {pizza.price}</div>
+                          </Stack>
+                        </Card>
+                      );
                     })}
                     <Row>
                       <div>

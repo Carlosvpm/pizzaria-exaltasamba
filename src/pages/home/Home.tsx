@@ -6,7 +6,7 @@ import { CartProvider } from "react-use-cart";
 
 export const Home = () => {
   console.warn(pizzas);
-  const desconto = 5.0;
+  const desconto = 0.0;
   return (
     <CartProvider>
       <NavBar desconto={desconto}></NavBar>
