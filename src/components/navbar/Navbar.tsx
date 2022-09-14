@@ -8,11 +8,13 @@ import {
   ContainerFinalizeButton,
   NavContainer,
   Row,
+  ExaltaNavbar
 } from "./navbar.styles";
 import { FinalizeorderButton } from "../finalize-order-button/finalize-order-button";
 import { useCart } from "react-use-cart";
 import { Button, Stack } from "react-bootstrap";
 import { PizzaInterface } from "../../models/Pizza.interface";
+
 
 type NavBarProps = {
   desconto: number;
@@ -37,13 +39,12 @@ export const NavBar = (props: NavBarProps) => {
   )}`;
 
   const desconto = props.desconto ? props.desconto : 0.0;
-
   return (
-    <NavContainer>
-      <Navbar bg="light" expand="true" className="mb-3">
-        <Container fluid>
-          <Navbar.Brand href="#">ExaltaPizza</Navbar.Brand>
-          <Navbar.Toggle aria-controls="offcanvasNavbar-expand-xxl" />
+    <NavContainer style={{paddingTop:0}}>
+      <Navbar variant="light" style={{paddingTop: 0, backgroundColor: "#D21D1D"}} expand="true" className="mb-3">
+        <Container fluid style={{marginTop: ".5rem"}}>
+          <Navbar.Brand style={{color: "#fff"}} href="#">ExaltaPizza!</Navbar.Brand>
+          <Navbar.Toggle style={{backgroundColor:"#fff"}} aria-controls="offcanvasNavbar-expand-xxl" />
           <Navbar.Offcanvas
             id="offcanvasNavbar-expand-xxl"
             aria-labelledby="offcanvasNavbarLabel-expand-xxl"
@@ -58,15 +59,6 @@ export const NavBar = (props: NavBarProps) => {
               <Nav>
                 <Column>
                   <>
-                    <div className="w-100 pb-3">
-                      <Button
-                        className="w-100 "
-                        variant="danger"
-                        onClick={() => emptyCart()}
-                      >
-                        Limpar carrinho
-                      </Button>
-                    </div>
 
                     {items.map((pizza, index) => {
                       return (
@@ -109,6 +101,17 @@ export const NavBar = (props: NavBarProps) => {
                         </Card>
                       );
                     })}
+                    {items.length > 0 === true ? (
+                        <div className="w-100 pb-3">
+                          <Button
+                            className="w-100 "
+                            style={{backgroundColor:"#D21D1D"}}
+                            onClick={() => emptyCart()}
+                          >
+                            Limpar carrinho
+                          </Button>
+                        </div>
+                    ): (null)}
                     <Row>
                       <div>
                         <p>Total de pizzas</p>
@@ -117,6 +120,7 @@ export const NavBar = (props: NavBarProps) => {
                         <p>{totalItems}</p>
                       </div>
                     </Row>
+
                     <Row>
                       <div>
                         <p>Subtotal</p>
