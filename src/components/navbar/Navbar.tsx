@@ -34,7 +34,7 @@ export const NavBar = (props: NavBarProps) => {
 
   const text: string = `Olá, gostaria de realizar meu pedido: ${items.map(
     (pizza) => {
-      return ` ${pizza.quantity} ${pizza.name} - tamanho(${pizza.size})`;
+      return ` ${pizza.quantity} ${pizza.name} - tamanho (${pizza.size})`;
     }
   )}`;
 
