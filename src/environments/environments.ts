@@ -1,5 +1,5 @@
 const environments = {
-  PHONE_NUMBER: "BOTE SEU NUMERO AQUI",
+  PHONE_NUMBER: "",
 };
 
 export default environments

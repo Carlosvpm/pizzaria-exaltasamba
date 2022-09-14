@@ -1,3 +1,4 @@
+import { Navbar } from 'react-bootstrap';
 import styled from "styled-components";
 
 export const NavbarItems = styled.div`
@@ -16,6 +17,7 @@ export const Column = styled.div`
   display: flex;
   flex-direction: column;
 `;
+
 
 export const Row = styled.div`
   display: flex;
