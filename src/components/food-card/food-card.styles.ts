@@ -15,6 +15,8 @@ export const PizzaItem = styled.div`
     align-items: center;
     text-decoration: none;
     cursor: pointer;
+  }  button:hover{
+    box-shadow: inset 0 0 100px 100px rgba(255, 255, 255, 0.1);
   }
   @media (max-width: 800px) {
     padding: 0rem;
@@ -65,6 +67,9 @@ export const PizzaItemAdd = styled.div`
   cursor: pointer;
   margin-top: -25px;
   transition: all ease 0.2s;
+  &:hover{
+    box-shadow: inset 0 0 100px 100px rgba(255, 255, 255, 0.1);
+  }
 `;
 
 export const PizzaItemPrice = styled.div`

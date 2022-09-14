@@ -13,8 +13,8 @@ export const FinalizeorderButton = (props: FinalizeOrderButtonProps) => {
       <Button
         href={url + "?text=" + text}
         target="_blank"
-        variant="primary"
         size="lg"
+        style={{backgroundColor:"#D21D1D"}}
       >
         Finalizar pedido
       </Button>

@@ -59,15 +59,6 @@ export const NavBar = (props: NavBarProps) => {
               <Nav>
                 <Column>
                   <>
-                    <div className="w-100 pb-3">
-                      <Button
-                        className="w-100 "
-                        variant="danger"
-                        onClick={() => emptyCart()}
-                      >
-                        Limpar carrinho
-                      </Button>
-                    </div>
 
                     {items.map((pizza, index) => {
                       return (
@@ -110,6 +101,17 @@ export const NavBar = (props: NavBarProps) => {
                         </Card>
                       );
                     })}
+                    {items.length > 0 === true ? (
+                        <div className="w-100 pb-3">
+                          <Button
+                            className="w-100 "
+                            style={{backgroundColor:"#D21D1D"}}
+                            onClick={() => emptyCart()}
+                          >
+                            Limpar carrinho
+                          </Button>
+                        </div>
+                    ): (null)}
                     <Row>
                       <div>
                         <p>Total de pizzas</p>
@@ -118,6 +120,7 @@ export const NavBar = (props: NavBarProps) => {
                         <p>{totalItems}</p>
                       </div>
                     </Row>
+
                     <Row>
                       <div>
                         <p>Subtotal</p>

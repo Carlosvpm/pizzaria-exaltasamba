@@ -22,9 +22,9 @@ export const FoodCard = () => {
         <PizzaItem>
           <button onClick={() => addItem(pizza)}>
             <PizzaItemIMG>
-              <img src="#" />
+              <img src={pizza.img} />
             </PizzaItemIMG>
-            <PizzaItemAdd>+</PizzaItemAdd>
+            <PizzaItemAdd style={{backgroundColor: "#D21D1D"}}>+</PizzaItemAdd>
           </button>
 
           <PizzaItemPrice>R$ {pizza.price}</PizzaItemPrice>
