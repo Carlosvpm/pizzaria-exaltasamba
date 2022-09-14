@@ -8,12 +8,10 @@ import {
   ContainerFinalizeButton,
   NavContainer,
   Row,
-  ExaltaNavbar
 } from "./navbar.styles";
 import { FinalizeorderButton } from "../finalize-order-button/finalize-order-button";
 import { useCart } from "react-use-cart";
 import { Button, Stack } from "react-bootstrap";
-import { PizzaInterface } from "../../models/Pizza.interface";
 
 
 type NavBarProps = {
