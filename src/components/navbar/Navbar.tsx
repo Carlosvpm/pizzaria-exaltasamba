@@ -8,11 +8,13 @@ import {
   ContainerFinalizeButton,
   NavContainer,
   Row,
+  ExaltaNavbar
 } from "./navbar.styles";
 import { FinalizeorderButton } from "../finalize-order-button/finalize-order-button";
 import { useCart } from "react-use-cart";
 import { Button, Stack } from "react-bootstrap";
 import { PizzaInterface } from "../../models/Pizza.interface";
+
 
 type NavBarProps = {
   desconto: number;
@@ -37,13 +39,12 @@ export const NavBar = (props: NavBarProps) => {
   )}`;
 
   const desconto = props.desconto ? props.desconto : 0.0;
-
   return (
-    <NavContainer>
-      <Navbar bg="light" expand="true" className="mb-3">
-        <Container fluid>
-          <Navbar.Brand href="#">ExaltaPizza</Navbar.Brand>
-          <Navbar.Toggle aria-controls="offcanvasNavbar-expand-xxl" />
+    <NavContainer style={{paddingTop:0}}>
+      <Navbar variant="light" style={{paddingTop: 0, backgroundColor: "#D21D1D"}} expand="true" className="mb-3">
+        <Container fluid style={{marginTop: ".5rem"}}>
+          <Navbar.Brand style={{color: "#fff"}} href="#">ExaltaPizza!</Navbar.Brand>
+          <Navbar.Toggle style={{backgroundColor:"#fff"}} aria-controls="offcanvasNavbar-expand-xxl" />
           <Navbar.Offcanvas
             id="offcanvasNavbar-expand-xxl"
             aria-labelledby="offcanvasNavbarLabel-expand-xxl"
