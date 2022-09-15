@@ -5,9 +5,9 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "start": "vite server",
+    "start": "vite serve",
     "build": "tsc && vite build",
-    "serve": "vite preview --port $PORT",
+    "serve": "vite preview",
     "preview": "vite preview",
     "test": "vitest run --coverage",
     "openmobile": "node ./node_modules/openmobile/ip.js"
