@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "start": "vite server --port $PORT",
+    "start": "vite server",
     "build": "tsc && vite build",
     "serve": "vite preview --port $PORT",
     "preview": "vite preview",
