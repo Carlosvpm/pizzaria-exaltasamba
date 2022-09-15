@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "vite",
     "start": "vite server --port $PORT",
-    "build": "vue-tsc --noEmit && vite build",
+    "build": "tsc && vite build",
     "serve": "vite preview --port $PORT",
     "preview": "vite preview",
     "test": "vitest run --coverage",
